@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main(int argc, char *argv[]) 
+{
+    int Score[4][5];
+    
+    for ( int i=0; i<4; i++ )
+        for ( int j=0; j<5; j++ )
+            cin>>Score[i][j];
+    
+    float total = 0;
+    for(int j=0;j<5;j++)
+    {
+    	for(int i=0;i<4;i++)
+    		total += Score[i][j];
+    		cout<< total / 4 << " ";
+    		total = 0;
+    }
+}
