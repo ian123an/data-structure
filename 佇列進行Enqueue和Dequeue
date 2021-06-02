@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Queue
+{
+public:
+    int arr[10];
+    int rear = -1;
+    int front = -1;
+    Queue()
+    {
+
+    };
+    void Enqueue(int x)
+    {
+        if (front == -1) front++;
+        {
+            arr[++rear] = x;
+        }
+    };
+    void Dequeue()
+    {
+        front++;
+    };
+    void PrintQueue()
+    {
+        for (int i = front; i <= rear; i++)
+        {
+            cout << arr[i] << " ";
+        }
+    };
+};
+
+int main(int argc, char* argv[])
+{
+    Queue queue;
+    int times, input;
+    cin >> times;
+    for (int i = 0; i < times; i++) {
+        cin >> input;
+        queue.Enqueue(input);
+    }
+    cin >> times;
+    for (int i = 0; i < times; i++) {
+        queue.Dequeue();
+    }
+    queue.PrintQueue();
+}
