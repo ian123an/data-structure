@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int main(int argc, char *argv[]) 
+{
+    int Score[3][4][5];
+    for ( int k=0; k<3; k++ )
+        for ( int i=0; i<4; i++ )
+            for ( int j=0; j<5; j++ )
+                cin>>Score[k][i][j];
+                
+    int sum[4]={0};
+    int nick[5]={0};
+    cout<<"同學總成績：";
+    for ( int i=0; i<4; i++ )
+    {
+        for ( int k=0; k<3; k++ )
+        {
+            for ( int j=0; j<5; j++ )
+            { 
+            	sum[i] += Score[k][i][j];
+            } 
+        }
+		cout<<sum[i]<<" ";
+	}
+	cout<<endl;
+	cout<<"科目總成績：";
+	for ( int j=0; j<5; j++ )
+    {
+        for ( int i=0; i<4; i++ )
+        {
+            for ( int k=0; k<3; k++ )
+            { 
+            	nick[j] += Score[k][i][j];
+            } 
+        }
+        cout<<nick[j]<<" ";
+	}
+}
