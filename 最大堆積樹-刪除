@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class MaxHeap
+{
+public:
+    int arr[100] = {};
+    int tail = 0;
+    MaxHeap() {}
+    void Insert(int x)
+    {
+        arr[++tail] = x;
+        int temp, temp_t = tail;
+        temp = tail / 2;
+        while (temp != 0 && arr[temp_t] > arr[temp])
+        {
+            int temp_n = arr[temp];
+            arr[temp] = arr[temp_t];
+            arr[temp_t] = temp_n;
+            temp = temp / 2;
+            temp_t = temp_t / 2;
+        }
+    }
+    void Print()
+    {
+        for (int i = 1; i <= tail; i++)
+        {
+            cout << arr[i] << " ";
+        }
+    }
+    int Delete()
+    {
+        int n = arr[1];
+        arr[1] = arr[tail--];
+        arr[tail + 1] = 0;
+        int temp = 1;
+        while (arr[temp] < arr[temp * 2] || arr[temp] < arr[(temp * 2) + 1])
+        {
+            if (arr[temp * 2] > arr[temp * 2 + 1])
+            {
+                int temp_n = arr[temp];
+                arr[temp] = arr[temp * 2];
+                arr[temp * 2] = temp_n;
+                temp = temp * 2;
+            }
+            else
+            {
+                int temp_n = arr[temp];
+                arr[temp] = arr[temp * 2 + 1];
+                arr[temp * 2 + 1] = temp_n;
+                temp = temp * 2 + 1;
+            }
+        }
+        return n;
+    }
+};
+int main(int argc, char* argv[])
+{
+    MaxHeap tree1;
+    int times, input;
+    for (cin >> times; times > 0; times--) { cin >> input; tree1.Insert(input); }
+    for (cin >> times; times > 0; times--) { tree1.Delete(); }
+    tree1.Print();
+}
